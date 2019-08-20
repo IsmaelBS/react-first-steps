@@ -34,6 +34,7 @@ class TechList extends Component {
               deleteTech={() => this.handleDeleteTech(tech)}
             />
           ))}
+          <TechItem />
         </ul>
         <input
           type="text"
