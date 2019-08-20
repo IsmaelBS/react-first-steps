@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TechItem from "./TechItem";
 
 class TechList extends Component {
   state = {
@@ -18,12 +19,20 @@ class TechList extends Component {
     });
   };
 
+  handleDeleteTech = delTech => {
+    this.setState({ techs: this.state.techs.filter(tech => tech !== delTech) });
+  };
+
   render() {
     return (
       <form onSubmit={this.handleNewTechSubmit}>
         <ul>
-          {this.state.techs.map(el => (
-            <li key={el}>{el}</li>
+          {this.state.techs.map(tech => (
+            <TechItem
+              key={tech}
+              tech={tech}
+              deleteTech={() => this.handleDeleteTech(tech)}
+            />
           ))}
         </ul>
         <input
